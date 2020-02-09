@@ -1,0 +1,16 @@
+.sidenav-content-wrapper {
+  --toolbarHeight: 64px;
+
+  @media (max-width: 599px) {
+    --toolbarHeight: 56px;
+  }
+
+  &.transparent-navbar {
+    --toolbarHeight: 0px;
+  }
+
+  position: relative;
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: 8px var(--toolbarHeight) 0px auto;
+}

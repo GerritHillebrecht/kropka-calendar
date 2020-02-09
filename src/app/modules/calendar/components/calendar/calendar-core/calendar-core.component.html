@@ -1,0 +1,34 @@
+<div
+  class="calendarAnimationWrapper"
+  [@calendarAnimator]="calendarService.calendarAnimationState"
+  (@calendarAnimator.done)="calendarService.resetAnimationState()"
+>
+  <full-calendar
+    #calendar
+    [plugins]="plugins"
+    [height]="'parent'"
+    [header]="''"
+    [events]="calendarEvents$ | async"
+    [eventOrder]="['type', 'roleTitle', 'start', 'title']"
+    [displayEventTime]="!(screenSizeService.isPhone$ | async)"
+    [eventTimeFormat]="{
+      hour: (screenSizeService.isPhone$ | async) ? 'numeric' : '2-digit',
+      minute: '2-digit',
+      meridiem: false
+    }"
+    [firstDay]="1"
+    [fixedWeekCount]="false"
+    [editable]="true"
+    [locale]="'de'"
+    [longPressDelay]="251"
+    [eventResizableFromStart]="true"
+    [weekNumbers]="!(screenSizeService.isPhone$ | async)"
+    [droppable]="true"
+    (eventClick)="onEventClick($event.event)"
+    (dateClick)="onDateClick($event)"
+    (eventResize)="onEventUpdate($event.event)"
+    (eventDrop)="onEventUpdate($event.event)"
+    (eventReceive)="onExternalEventDrop($event.event)"
+  >
+  </full-calendar>
+</div>

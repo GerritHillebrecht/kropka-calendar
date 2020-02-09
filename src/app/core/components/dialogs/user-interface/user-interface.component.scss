@@ -1,0 +1,59 @@
+mat-dialog-content {
+  // width: 354px;
+  position: relative;
+
+  .avatar-container {
+    position: relative;
+    display: flex;
+
+    app-avatar {
+      position: relative;
+      z-index: 3;
+    }
+  }
+
+  .header-bar {
+    position: absolute;
+    background: transparent;
+    top: 0;
+    height: 20px !important;
+  }
+
+  .headline,
+  .subline {
+    font-weight: 400;
+  }
+
+  .headline {
+    font-size: 16px;
+    font-family: 'Google Sans', 'Roboto', 'Arial';
+  }
+
+  .subline {
+    font-size: 14px;
+    color: #5f6368;
+  }
+
+  .rounded-button {
+    border-radius: 100px;
+  }
+
+  .full-width-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: 500 14px/16px Google Sans, Roboto, RobotoDraft, Helvetica, Arial,
+      sans-serif;
+    color: #3c4043;
+    font-weight: 500;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #f7f8f8;
+    }
+
+    &:active {
+      background-color: #e8e8e9;
+    }
+  }
+}

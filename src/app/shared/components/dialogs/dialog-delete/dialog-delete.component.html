@@ -1,0 +1,17 @@
+<div class="dialog-full-screen">
+  <div class="dialog-header red-header">
+    <h1 class="mat-display-1">{{ dialogData.header }} löschen</h1>
+  </div>
+  <div class="dialog-content">
+    <p>Möchtest du wirklich löschen?</p>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="dialog-actions">
+    <button mat-button class="ml-auto mr-2" [mat-dialog-close]="false">
+      Abbrechen
+    </button>
+    <button mat-flat-button color="warn" [mat-dialog-close]="true">
+      Löschen
+    </button>
+  </div>
+</div>

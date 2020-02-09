@@ -1,0 +1,12 @@
+<div class="calendar-wrapper" (swipe)="onSwipe($event)">
+  <app-calendar-core style="height: 100%;"></app-calendar-core>
+  <button
+    (click)="calendarService.toggleCalendarSidenav()"
+    *ngIf="isAdmin$ | async"
+    class="add-button"
+    mat-fab
+    color="primary"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+</div>

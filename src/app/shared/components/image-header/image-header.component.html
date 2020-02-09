@@ -1,0 +1,10 @@
+<div
+  class="image-header-container mask"
+  [ngClass]="{ mask: headerMask }"
+  [ngStyle]="{
+    'background-image': 'url(' + headerBackgroundImage + ')',
+    height: headerHeight
+  }"
+>
+  <ng-content></ng-content>
+</div>

@@ -1,0 +1,37 @@
+<mat-dialog-content>
+  <div class="avatar-container">
+    <app-avatar
+      [avatarSwitcherEnabled]="false"
+      [avatarImage]="userProfile.photoURL"
+      [avatarSize]="130"
+    ></app-avatar>
+    <mat-toolbar>
+      <button
+        class="ml-auto"
+        mat-icon-button
+        [matTooltip]="'Schließen'"
+        (click)="closeDialog()"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar>
+  </div>
+  <h1 class="mat-headline my-3">
+    {{ userProfile.name.full }}
+  </h1>
+  <div class="date-box">
+    <mat-divider></mat-divider>
+    <div class="centered-content">
+      <mat-icon class="mr-2">cake</mat-icon>
+      <p class="mat-body-1 my-3">
+        {{ userProfile.birthday.date.toDate() | date: 'longDate' }}
+      </p>
+    </div>
+    <mat-divider></mat-divider>
+  </div>
+  <div class="button-wrapper mt-3">
+    <button mat-stroked-button class="rounded-button" (click)="closeDialog()">
+      Schließen
+    </button>
+  </div>
+</mat-dialog-content>

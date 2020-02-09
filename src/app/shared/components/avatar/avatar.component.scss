@@ -1,0 +1,56 @@
+.avatar {
+  border-radius: 50%;
+  background-color: white;
+  position: relative;
+  display: grid;
+  place-content: center;
+
+  &.clickable {
+    cursor: pointer;
+  }
+
+  // Image Element
+  &__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+  }
+
+  // Change button Element
+  &__change-button {
+    position: absolute;
+    bottom: -6px;
+    right: -6px;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    &:hover {
+      background-color: #f7f8f8;
+    }
+
+    &:active {
+      background-color: #e8e8e9;
+    }
+
+    mat-icon {
+      width: 18px;
+      height: 18px;
+      font-size: 18px;
+    }
+  }
+}

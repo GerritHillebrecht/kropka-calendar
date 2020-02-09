@@ -1,0 +1,18 @@
+mat-dialog-content {
+
+  .content-text {
+    font-size: 15px;
+    font-weight: 400;
+  }
+
+  .shift-container {
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 50px auto;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    padding: 16px;
+    border: 1px solid rgba(29, 28, 29, 0.1);
+  }
+}

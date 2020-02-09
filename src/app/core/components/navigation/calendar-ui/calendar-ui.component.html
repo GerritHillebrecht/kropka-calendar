@@ -1,0 +1,80 @@
+<div
+  class="animated bounceInDown faster"
+  style="display: flex; align-items: center; width: 100%"
+  *ngIf="calendarService.calendarApi"
+>
+  <ng-container *ngIf="!(screenSizeService.isPhone$ | async)">
+    <button
+      class="ml-4"
+      mat-stroked-button
+      (click)="onToday()"
+      [matTooltip]="today | date: 'MMMM yyyy'"
+    >
+      Heute
+    </button>
+    <button
+      class="ml-1"
+      mat-icon-button
+      (click)="changeMonth('prev')"
+      [matTooltip]="getMonthIndicator('prev') | date: 'MMMM'"
+    >
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    <button
+      class="mr-1"
+      mat-icon-button
+      (click)="changeMonth('next')"
+      [matTooltip]="getMonthIndicator('next') | date: 'MMMM'"
+    >
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </ng-container>
+  <p class="showDate m-0 mr-auto">
+    {{ calendarService.calendarApi.getDate() | date: 'MMMM yyyy' }}
+  </p>
+
+  <mat-spinner
+    class="mr-3"
+    [diameter]="30"
+    *ngIf="calendarService.calendarLoading$ | async"
+  ></mat-spinner>
+
+  <button [matMenuTriggerFor]="menu" mat-icon-button class="mr-3">
+    <mat-icon
+      [matBadge]="newNotifications(latestShifts$ | async).length"
+      [matBadgeColor]="'warn'"
+    >
+      notifications
+    </mat-icon>
+  </button>
+
+  <mat-menu #menu="matMenu" (closed)="updateSeenStatus()">
+    <mat-divider></mat-divider>
+
+    <ng-container *ngFor="let shift of latestShifts$ | async">
+      <div
+        class="shift-entry"
+        [ngClass]="{ entryAlreadySeen: shift.seenByEmployee }"
+        [matTooltip]="'Neuer Dienstplaneintrag'"
+      >
+        <div class="centered-content" *ngIf="!shift.seenByEmployee">
+          <div class="new-indicator"></div>
+        </div>
+        <div class="update-content">
+          <p class="muted">
+            {{ fromNow(shift.createdAt.toDate()) }} - Neuer Eintrag
+          </p>
+          <p class="date">{{ shift.start.toDate() | date: 'fullDate' }}</p>
+          <div class="time">
+            <mat-icon class="mr-2">access_time</mat-icon>
+            {{ shift.start.toDate() | date: 'HH:mm' }}
+            <span class="mx-1"> - </span>
+            <mat-icon class="mr-2">timelapse</mat-icon>
+            {{ shift.end.toDate() | date: 'HH:mm' }}
+          </div>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+    </ng-container>
+  </mat-menu>
+</div>

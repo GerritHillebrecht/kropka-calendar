@@ -1,0 +1,18 @@
+<div class="user-item" matRipple [matRippleColor]="userProfile.role.color">
+  <app-avatar
+    [avatarSwitcherEnabled]="false"
+    [avatarSize]="34"
+    [avatarBorderSize]="'2px'"
+    [avatarImage]="userProfile.photoURL"
+    [avatarShadow]="true"
+  ></app-avatar>
+  <div class="user-information">
+    <p class="m-0 firstname">
+      {{ userProfile.name.first }}
+    </p>
+    <p class="m-0 lastname">{{ userProfile.name.last }}</p>
+  </div>
+  <button mat-icon-button class="drag_handler">
+    <mat-icon>drag_handle</mat-icon>
+  </button>
+</div>

@@ -1,0 +1,33 @@
+<div class="sidenav-container">
+  <!-- Adding Button -->
+  <div class="add-buttons">
+    <p class="mat-headline m-0">Events</p>
+  </div>
+
+  <!-- New Event -->
+  <button
+    matTooltip="Neue Veranstaltung anlegen"
+    class="event-button"
+    mat-stroked-button
+    color="primary"
+    (click)="onAddEvent()"
+  >
+    <mat-icon style="position: relative; top: -1px" class="mr-1">
+      post_add
+    </mat-icon>
+    Veranstaltung
+  </button>
+
+  <!-- Adding Button -->
+  <div class="add-buttons mb-2">
+    <p class="mat-headline m-0">Schichten</p>
+    <button mat-icon-button class="ml-auto" matTooltip="Mitarbeiter hinzufügen">
+      <mat-icon>person_add</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="Rolle hinzufügen">
+      <mat-icon>assignment_ind</mat-icon>
+    </button>
+  </div>
+
+  <app-user-list></app-user-list>
+</div>

@@ -1,0 +1,105 @@
+.dialog-headbar {
+  display: flex;
+  align-items: center;
+  color: #333;
+
+  .dialog-headline {
+    font-size: 22px;
+    font-family: 'Google Sans', 'Roboto', 'Arial';
+    font-weight: 900;
+    margin: 0;
+  }
+}
+
+.dialog-show-overflow {
+  overflow: visible;
+
+  mat-dialog-container {
+    overflow: visible;
+  }
+}
+
+.card-inside-dialog {
+  margin: -24px;
+  height: calc(100% + 48px);
+  width: calc(100% + 48px);
+
+  $overlap: 30px;
+
+  &.raised-content {
+    .card-header {
+      padding-bottom: $overlap;
+    }
+
+    .card-content {
+      margin-top: -$overlap;
+      border-top-left-radius: $overlap;
+      border-top-right-radius: $overlap;
+      position: relative;
+      z-index: 10;
+    }
+  }
+
+  .card-header {
+    position: relative;
+
+    .card-header-content {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p {
+        margin: 0;
+      }
+
+      .card-header-content-bar {
+        background: transparent;
+        color: inherit;
+      }
+    }
+    .card-header-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+
+      &.card-header-background-image {
+        // background-image: url('/src/assets/images/background/party-resized.jpg');
+      }
+    }
+  }
+
+  .card-content {
+    mat-form-field {
+      font-size: 16px;
+      width: 100%;
+    }
+  }
+
+  .card-actions {
+    .actions-bar {
+      background-color: transparent;
+      justify-content: flex-end;
+
+      button {
+        &.mobile {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

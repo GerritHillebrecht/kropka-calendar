@@ -1,0 +1,107 @@
+<mat-dialog-content class="show-shift-card" [formGroup]="shiftForm">
+  <!-- Avatar & top button -->
+  <div class="avatar-container">
+    <app-avatar
+      [avatarSize]="130"
+      [avatarSwitcherEnabled]="false"
+      [avatarImage]="userProfile.photoURL"
+    ></app-avatar>
+    <mat-toolbar>
+      <mat-slide-toggle
+        formControlName="preliminary"
+        *ngIf="adminStatus$ | async"
+      >
+        <p class="prelim-text">Vorl.</p>
+      </mat-slide-toggle>
+      <button
+        class="ml-auto"
+        mat-icon-button
+        [matTooltip]="'Schließen'"
+        (click)="closeDialog()"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar>
+  </div>
+
+  <!-- Content -->
+  <div class="content-container">
+    <h1 class="mat-headline mb-2">
+      {{ userProfile.name.full }}
+    </h1>
+    <div class="role-wrapper">
+      <span></span>
+      <div
+        class="role-box centered-content"
+        [ngStyle]="{ 'border-color': roleControl.value.color }"
+      >
+        <mat-icon [ngStyle]="{ color: roleControl.value.color }" class="mr-2">
+          {{ roleControl.value.icon }}
+        </mat-icon>
+        <ng-container *ngIf="!(adminStatus$ | async)">{{
+          role.title
+        }}</ng-container>
+        <div class="centered-content" *ngIf="adminStatus$ | async">
+          <mat-form-field class="invisible-select">
+            <mat-select formControlName="role">
+              <mat-option *ngFor="let role of roles" [value]="role">
+                {{ role.title }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <span></span>
+    </div>
+    <div class="shift-time-container centered-content">
+      <mat-icon class="mr-2" [matTooltip]="'Schichtbeginn'"
+        >access_time</mat-icon
+      >
+      <p *ngIf="!(adminStatus$ | async)">
+        {{ calendarEvent.start | date: 'HH:mm' }}
+      </p>
+      <input
+        *ngIf="adminStatus$ | async"
+        class="invisible-input"
+        type="time"
+        formControlName="startTime"
+      />
+      <span class="mx-3">-</span>
+      <mat-icon class="mr-2" [matTooltip]="'Schichtende'">timelapse</mat-icon>
+      <p *ngIf="!(adminStatus$ | async)">
+        {{ calendarEvent.end | date: 'HH:mm' }}
+      </p>
+      <input
+        *ngIf="adminStatus$ | async"
+        class="invisible-input"
+        type="time"
+        formControlName="endTime"
+      />
+    </div>
+  </div>
+
+  <!-- Close Button -->
+  <div class="button-wrapper">
+    <button mat-stroked-button class="rounded-button" (click)="closeDialog()">
+      Schließen
+    </button>
+    <ng-container *ngIf="adminStatus$ | async">
+      <button
+        color="warn"
+        mat-stroked-button
+        class="rounded-button ml-1"
+        (click)="deleteShift()"
+      >
+        Löschen
+      </button>
+      <button
+        color="primary"
+        mat-flat-button
+        class="rounded-button ml-1"
+        (click)="updateShift()"
+      >
+        Update
+      </button>
+    </ng-container>
+  </div>
+</mat-dialog-content>

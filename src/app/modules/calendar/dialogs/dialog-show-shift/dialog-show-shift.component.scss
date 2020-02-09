@@ -1,0 +1,127 @@
+.show-shift-card {
+  overflow: visible;
+  text-align: center;
+  padding-left: 0;
+  padding-right: 0;
+
+  .avatar-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: calc(130px / 2);
+    margin-top: -24px;
+    margin-bottom: 16px;
+
+    app-avatar {
+      transform: translateY(-65px);
+      position: relative;
+      z-index: 2;
+    }
+
+    mat-toolbar {
+      position: absolute;
+      top: 0;
+      background-color: transparent;
+
+      .prelim-text {
+        font-size: 14px;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .content-container {
+    color: #333;
+
+    .mat-headline {
+      font-family: 'Google Sans', 'Roboto', 'Arial';
+    }
+
+    .role-wrapper {
+      display: grid;
+      grid-template-columns: auto min-content auto;
+
+      .role-box {
+        border-radius: 100px;
+        border-width: 1px;
+        border-style: solid;
+
+        padding: 4px 16px;
+
+        --font-size: 16px;
+
+        font-size: var(--font-size);
+
+        mat-icon {
+          width: var(--font-size);
+          height: var(--font-size);
+          font-size: var(--font-size);
+        }
+      }
+    }
+
+    .invisible-input {
+      background: none;
+      border: none;
+      outline: none;
+      padding: none;
+      margin: none;
+      font-style: inherit;
+      font-size: inherit;
+      font-family: inherit;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        /* display: none; <- Crashes Chrome on hover */
+        -webkit-appearance: none;
+        margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+      }
+
+      &[type='time']::-webkit-clear-button {
+        display: none;
+      }
+    }
+
+    .shift-time-container {
+      --border-color: #e8e8e9;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      margin: 16px 0;
+      padding: 16px 0;
+    }
+  }
+
+  .rounded-button {
+    border-radius: 100px;
+  }
+}
+
+.shift-container {
+  padding-bottom: 15px;
+  display: grid;
+  grid-template-columns: 100px auto;
+  gap: 10px;
+
+  @media (max-width: 599px) {
+    grid-template-columns: auto;
+    gap: 0;
+  }
+
+  .info-container {
+    display: flex;
+    align-items: center;
+
+    p {
+      margin: 0;
+    }
+  }
+}
+
+.text-centered {
+  text-align: center;
+}
+
+.content-centered {
+  justify-content: center;
+}

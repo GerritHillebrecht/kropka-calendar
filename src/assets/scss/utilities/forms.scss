@@ -1,0 +1,59 @@
+.form-box {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 0 15px;
+
+  /* Change the white to any color ;) */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+  }
+
+  &.form-box-three {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &.form-box-four {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &.form-box-five {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media screen and (max-width: 599px) {
+  .form-box {
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 0;
+  }
+}
+
+
+mat-form-field {
+  &.invisible-select {
+    margin-top: -20px;
+    margin-bottom: -27px;
+
+    .mat-form-field-infix {
+      width: unset!important;
+
+      .mat-select-value {
+        max-width: unset!important;
+        width: unset!important;
+      }
+    }
+
+    .mat-form-field-underline {
+      display: none;
+    }
+  }
+}
+
+.full-width-input {
+  mat-form-field {
+    width: 100%;
+  }
+}

@@ -1,0 +1,31 @@
+<mat-toolbar
+  [ngClass]="{
+    'mat-elevation-z5': navShadow,
+    bordered: navBorder
+  }"
+>
+  <!-- Mobile Navigation toggle -->
+  <!-- <button
+    *ngIf="screenSizeService.isPhone$ | async"
+    mat-icon-button
+    (click)="sidenavService.toggleSidenav()"
+  >
+    <mat-icon>menu</mat-icon>
+  </button> -->
+
+  <!-- Logo -->
+  <img
+    src="../../../../../assets/images/logo/logo-box.png"
+    type="image/svg+xml"
+    [routerLink]="['/']"
+    *ngIf="!(screenSizeService.isPhone$ | async)"
+  />
+
+  <!-- Optional Bars -->
+  <div style="display: flex; align-items: center; flex-grow: 1;">
+    <app-calendar-ui class="ml-0 ml-md-4" style="width: 100%"></app-calendar-ui>
+  </div>
+
+  <!-- Navigation & user ui -->
+  <app-user-ui></app-user-ui>
+</mat-toolbar>

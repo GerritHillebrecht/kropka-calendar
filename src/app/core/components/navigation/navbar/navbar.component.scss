@@ -1,0 +1,18 @@
+mat-toolbar {
+  background-color: white;
+  color: black;
+  z-index: 15;
+  position: relative;
+
+
+  &.bordered {
+    border-bottom: 1px solid #ccc;
+  }
+
+  img {
+    max-height: 34px;
+    fill: #333;
+    // filter: invert(1);
+    margin-left: 5px;
+  }
+}

@@ -1,0 +1,42 @@
+<div
+  class="avatar"
+  [ngClass]="{
+    'mat-elevation-z3': avatarShadow,
+    clickable: avatarClickable
+  }"
+  [ngStyle]="{
+    width: avatarSize + 'px',
+    height: avatarSize + 'px',
+    'border-width': avatarBorderSize,
+    'border-color': avatarBorderColor,
+    'border-style': avatarBorderStyle
+  }"
+>
+  <!-- Avatar Image -->
+  <img
+    class="avatar__image"
+    (load)="imageLoading = false"
+    [src]="avatarImage"
+    [hidden]="imageLoading"
+  />
+
+  <!-- Avatar Change Button -->
+  <div
+    *ngIf="avatarSwitcherEnabled"
+    class="avatar__change-button mat-elevation-z3"
+    [matTooltip]="'Foto ändern'"
+    (click)="avatarInput.click()"
+  >
+    <mat-icon>add_a_photo</mat-icon>
+    <input
+      [hidden]="true"
+      (change)="startUpload($event.target.files[0])"
+      type="file"
+      #avatarInput
+      accept="image/x-png,image/jpeg,image/gif"
+    />
+  </div>
+
+  <!-- Loading Spinner -->
+  <mat-spinner *ngIf="imageLoading" [diameter]="spinnersize()"></mat-spinner>
+</div>

@@ -1,0 +1,19 @@
+mat-sidenav-container {
+  height: 100%;
+  background-color: transparent;
+
+  mat-sidenav {
+    min-width: min(300px, 25vw);
+    background-color: white;
+    border-top: 1px solid rgb(221, 221, 221);
+    
+    @media (max-width: 599px) {
+      width: 75vw;
+    }
+  }
+
+  mat-sidenav-content {
+    height: 100%;
+    background-color: transparent;
+  }
+}

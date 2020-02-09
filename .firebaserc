@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "das-kropka"
+  },
+  "targets": {
+    "das-kropka": {
+      "hosting": {
+        "kalender": [
+          "kropka-kalender"
+        ]
+      }
+    }
+  }
+}

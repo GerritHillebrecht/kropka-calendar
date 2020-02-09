@@ -1,0 +1,79 @@
+<ng-container *ngIf="!(authService.loginLoading$ | async)">
+  <!-- <h1 class="headline mb-3 mt-0" style="text-align: center;">
+    Zugangsdaten
+  </h1> -->
+  <div class="login-container container full-width-input mat-elevation-z3">
+    <div class="row" [formGroup]="authForm">
+      <div class="col-12">
+        <mat-form-field [floatLabel]="'always'">
+          <mat-label>E-Mail</mat-label>
+          <input
+            matInput
+            style="color: #333"
+            formControlName="email"
+            placeholder="Deine E-Mail-Adresse"
+          />
+          <mat-hint>Die E-Mail-Adresse deiner Registrierung.</mat-hint>
+          <mat-error *ngIf="email.invalid">
+            Bitte eine vollständige E-Mail-Adresse angeben.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-12 my-3">
+        <mat-form-field [floatLabel]="'always'">
+          <mat-label>Passwort</mat-label>
+          <input
+            style="color: #333"
+            matInput
+            formControlName="password"
+            placeholder="Dein Passwort"
+            [type]="showPassword ? 'text' : 'password'"
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            style="color: black"
+            (click)="showPassword = !showPassword"
+            [matTooltip]="
+              showPassword ? 'Passwort verbergen' : 'Passwort anzeigen'
+            "
+          >
+            <mat-icon>remove_red_eye</mat-icon>
+          </button>
+          <mat-error *ngIf="password.invalid">
+            Bitte ein Passwort angeben.
+          </mat-error>
+          <mat-hint>Dein Kropkå-Account Passwort.</mat-hint>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <button
+    mat-raised-button
+    (click)="onSubmit()"
+    class="auth-button mt-3"
+    color="primary"
+  >
+    Anmelden
+  </button>
+  <button
+    mat-button
+    class="auth-button mt-2"
+    [routerLink]="['/auth/forgot-password']"
+  >
+    Passwort vergessen
+  </button>
+  <!-- <button mat-button class="auth-button mt-2">
+  Zurück
+</button> -->
+</ng-container>
+
+<div
+  class="loading-container centered-content"
+  *ngIf="authService.loginLoading$ | async"
+>
+  <div style="text-align: center;">
+    <mat-spinner></mat-spinner>
+    <p class="m-0 mt-3">Authenticating..</p>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<mat-sidenav-container>
+  <mat-sidenav
+    #sidenav
+    [opened]="calendarService.calendarSidenavOpened$ | async"
+    [mode]="(screenSizeService.isPhone$ | async) ? 'over' : 'side'"
+    [autoFocus]="false"
+    (closedStart)="calendarService.closeCalendarSidenav()"
+  >
+    <app-sidenav-layout (openEvent)="sidenav.close()"></app-sidenav-layout>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

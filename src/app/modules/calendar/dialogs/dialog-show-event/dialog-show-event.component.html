@@ -1,0 +1,52 @@
+<mat-dialog-content>
+  <!-- Content -->
+  <div class="event-card">
+    <!-- Header -->
+    <div class="event-card__header">
+      <!-- <button mat-icon-button (click)="closeDialog()">
+        <mat-icon>chevron_left</mat-icon>
+      </button> -->
+      <h1 class="mat-title m-0">
+        {{ calendarEvent.title | trunk: 30 }}
+      </h1>
+    </div>
+
+    <!-- description -->
+    <p class="event-card__description">
+      {{ calendarEvent.description }}
+    </p>
+
+    <!-- Start & End -->
+    <div class="event-card__times">
+      <div class="event-card__times__time">
+        <small>von:</small>
+        <mat-icon class="mx-2">access_time</mat-icon>
+        {{ calendarEvent.start.toDate() | date: 'HH:mm' }}
+      </div>
+      <div class="event-card__times__time">
+        <small>bis:</small>
+        <mat-icon class="mx-2">timelapse</mat-icon>
+        {{ calendarEvent.end.toDate() | date: 'HH:mm' }}
+      </div>
+    </div>
+
+    <!-- assigned employees -->
+    <!-- <div class="event-card__assigned-members">
+      <div class="event-card__assigned-members__member mat-elevation-z3"></div>
+    </div> -->
+  </div>
+</mat-dialog-content>
+<mat-divider></mat-divider>
+<mat-dialog-actions>
+  <button mat-stroked-button class="ml-auto">Schließen</button>
+  <ng-container *ngIf="authService.isAdmin$ | async">
+    <button
+      class="ml-2"
+      mat-stroked-button
+      color="warn"
+      (click)="deleteEvent()"
+    >
+      Löschen
+    </button>
+  </ng-container>
+</mat-dialog-actions>

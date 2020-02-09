@@ -1,0 +1,47 @@
+<div class="dialog-headbar">
+  <h1 class="m-0 dialog-headline">
+    Eintrag löschen
+  </h1>
+  <button
+    mat-icon-button
+    class="ml-auto"
+    matTooltip="Schließen"
+    (click)="closeDialog()"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<mat-dialog-content>
+  <p class="content-text">
+    Bist du sicher, dass du diesen Eintrag löschen möchtest? Das kann nicht
+    rückgängig gemacht werden.
+  </p>
+  <div class="shift-container">
+    <app-avatar
+      [avatarImage]="shift.userProfile.photoURL"
+      [avatarSwitcherEnabled]="false"
+      [avatarSize]="50"
+    >
+    </app-avatar>
+    <div class="shift-content">
+      <p class="m-0">{{ shift.userProfile.name.full }}</p>
+      <p
+        class="m-0"
+        style="font-weight: 700;"
+        [ngStyle]="{ color: shift.role.color }"
+      >
+        {{ shift.role.title }}
+      </p>
+    </div>
+  </div>
+</mat-dialog-content>
+<!-- <mat-divider></mat-divider> -->
+<mat-dialog-actions style="padding-bottom: 24px;">
+  <button mat-stroked-button class="ml-auto mr-1" (click)="closeDialog()">
+    Abbrechen
+  </button>
+  <button mat-flat-button class="" color="warn" (click)="deleteShift()">
+    Löschen
+  </button>
+</mat-dialog-actions>

@@ -1,0 +1,48 @@
+.user-item {
+  display: grid;
+  grid-template-columns: min-content auto min-content;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+
+  app-avatar {
+    position: relative;
+    z-index: 5;
+  }
+
+  &:hover {
+    background-color: #f3f3f3;
+  }
+
+  &:active {
+    background-color: #eee;
+  }
+
+  .user-information {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    z-index: 5;
+
+    p {
+      font-family: 'Google Sans', 'Roboto', 'Arial';
+
+      &.firstname {
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      &.lastname {
+        font-size: 11px;
+      }
+    }
+  }
+
+  .drag_handler {
+    position: relative;
+    z-index: 3;
+  }
+}

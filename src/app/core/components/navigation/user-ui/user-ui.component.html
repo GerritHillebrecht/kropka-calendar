@@ -1,0 +1,24 @@
+<app-avatar
+  *ngIf="authService.userProfile$ | async as userProfile"
+  [avatarSize]="40"
+  [avatarImage]="userProfile.photoURL"
+  [avatarSwitcherEnabled]="false"
+  [avatarClickable]="true"
+  [avatarBorderSize]="'2px'"
+  (click)="userInterface()"
+></app-avatar>
+<!-- [matMenuTriggerFor]="menu" -->
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <mat-icon>dialpad</mat-icon>
+    <span>Redial</span>
+  </button>
+  <button mat-menu-item disabled>
+    <mat-icon>voicemail</mat-icon>
+    <span>Check voice mail</span>
+  </button>
+  <button mat-menu-item (click)="authService.signOut()">
+    <mat-icon>power_off</mat-icon>
+    <span>Abmelden</span>
+  </button>
+</mat-menu>

@@ -1,0 +1,39 @@
+mat-dialog-content {
+  overflow: visible;
+  text-align: center;
+  padding: 0;
+
+  .avatar-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: calc(130px / 2);
+    margin-top: -24px;
+
+    app-avatar {
+      transform: translateY(-65px);
+      position: relative;
+      z-index: 2;
+    }
+
+    mat-toolbar {
+      position: absolute;
+      top: 0;
+      background-color: transparent;
+
+      .prelim-text {
+        font-size: 14px;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .date-box {
+    text-align: center;
+  }
+
+  .rounded-button {
+    border-radius: 100px;
+  }
+}

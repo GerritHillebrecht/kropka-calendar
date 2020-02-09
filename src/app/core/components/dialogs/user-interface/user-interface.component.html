@@ -1,0 +1,43 @@
+<ng-container *ngIf="userProfile$ | async as userProfile">
+  <mat-dialog-content class="px-0" style="text-align: center;">
+    <div class="avatar-container">
+      <app-avatar
+        class="mx-auto"
+        [avatarImage]="userProfile.photoURL"
+        [avatarSize]="80"
+      ></app-avatar>
+    </div>
+    <mat-toolbar class="header-bar">
+      <button
+        mat-icon-button
+        class="ml-auto"
+        [matTooltip]="'Schließen'"
+        (click)="closeDialog()"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar>
+    <div class="user-auth-info my-3">
+      <h1 class="headline m-0">
+        {{ userProfile.name.full }}
+      </h1>
+      <h2 class="subline m-0">
+        {{ userProfile.email }}
+      </h2>
+    </div>
+    <button class="rounded-button mb-4" mat-stroked-button>
+      Kropkå-Konto verwalten
+    </button>
+    <mat-divider></mat-divider>
+    <a class="full-width-button py-3">
+      <mat-icon class="mr-2">
+        timeline
+      </mat-icon>
+      Meine Timeline
+    </a>
+    <mat-divider></mat-divider>
+    <button (click)="signOff()" mat-stroked-button class="mt-3">
+      Abmelden
+    </button>
+  </mat-dialog-content>
+</ng-container>

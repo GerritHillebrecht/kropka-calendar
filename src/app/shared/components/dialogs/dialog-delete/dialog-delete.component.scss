@@ -1,0 +1,45 @@
+.dialog-full-screen {
+  margin: -24px;
+  width: 100vw;
+
+  --maxWidth: 500px;
+  --paddingBase: 8px;
+
+  // Maxwidth
+  @media (max-width: 399px) {
+    --maxWidth: '96vw';
+  }
+  max-width: var(--maxWidth);
+
+  .dialog-header {
+    padding-top: calc(var(--paddingBase) * 5);
+    padding-right: calc(var(--paddingBase) * 4);
+    padding-bottom: calc(var(--paddingBase) * 3);
+    padding-left: calc(var(--paddingBase) * 4);
+
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin: 0;
+    }
+
+    &.red-header {
+      background-color: red;
+      color: white;
+    }
+  }
+
+  .dialog-content {
+    padding: calc(var(--paddingBase) * 2) calc(var(--paddingBase) * 3);
+  }
+
+  .dialog-actions {
+    padding: 8px 16px;
+    display: flex;
+    position: relative;
+  }
+}

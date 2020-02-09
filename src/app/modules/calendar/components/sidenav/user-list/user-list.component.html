@@ -1,0 +1,17 @@
+<ng-container *ngFor="let role of roles$ | async as roles">
+  <mat-card-subtitle [ngStyle]="{ 'border-bottom': '2px solid ' + role.color }">
+    <mat-icon class="mr-2">{{ role.icon }} </mat-icon>
+    <span style="display: block;"> {{ role.title }}</span>
+  </mat-card-subtitle>
+  <div class="role-container" *ngIf="users$ | async as users">
+    <div
+      #userEvent
+      *ngFor="let user of users | userByRole: role.title"
+      [attr.data-eventData]="user | json"
+      (press)="pressEvent()"
+      style="touch-action:unset!important; user-select: unset!important;"
+    >
+      <app-user-list-item [userProfile]="user"></app-user-list-item>
+    </div>
+  </div>
+</ng-container>

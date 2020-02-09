@@ -1,0 +1,11 @@
+<mat-sidenav-container>
+  <mat-sidenav
+    [opened]="sidenavService.sidenavOpened$ | async"
+    (closedStart)="sidenavService.closeSidenav()"
+  >
+    <app-sidenav></app-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
