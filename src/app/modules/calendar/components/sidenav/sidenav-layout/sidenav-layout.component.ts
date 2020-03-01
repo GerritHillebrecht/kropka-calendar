@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { DialogAddEventComponent } from '@app/modules/calendar/dialogs/dialog-add-event/dialog-add-event.component';
 
 @Component({

@@ -3,7 +3,7 @@ import {
   OnInit,
   Inject,
 } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { EventApi } from '@fullcalendar/core';
 import { AuthService } from '@app/core/services/auth';
 import {

@@ -17,7 +17,7 @@ import { RoleService } from '@app/core/services/roles';
 import { ScreenSizeService } from '@app/core/services/utility';
 
 import * as moment from 'moment';
-import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { firestore } from 'firebase/app';
 import { DeleteShiftComponent } from '../delete-shift/delete-shift.component';
 import { ShiftService } from '@app/core/services/shifts';

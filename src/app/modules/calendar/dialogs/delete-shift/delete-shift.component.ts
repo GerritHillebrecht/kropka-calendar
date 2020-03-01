@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Shift } from '@app/core/models';
 import { ShiftService } from '@app/core/services/shifts';
 import { NotificationMessageService } from '@app/core/services/notification';

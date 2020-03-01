@@ -6,7 +6,7 @@ import {
   FormControl
 } from '@angular/forms';
 import { ScreenSizeService } from '@app/core/services/utility';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material/dialog';
 import { EventService } from '@app/core/services/events';
 import { Event, UserProfile } from '@app/core/models';
 

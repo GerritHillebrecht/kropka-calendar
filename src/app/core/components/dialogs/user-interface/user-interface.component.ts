@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserProfile } from '@app/core/models';
 import { Observable } from 'rxjs';
 import { AuthService } from '@app/core/services/auth';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-interface',

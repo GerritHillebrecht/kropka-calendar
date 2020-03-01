@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HammerModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 
@@ -26,7 +26,8 @@ import { FUNCTIONS_REGION } from '@angular/fire/functions';
       enabled: environment.production
     }),
     CoreModule,
-    MaterialDesignModule
+    MaterialDesignModule,
+    HammerModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'de' },

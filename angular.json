@@ -133,5 +133,8 @@
       }
     }
   },
-  "defaultProject": "kropka-calendar-webapp"
+  "defaultProject": "kropka-calendar-webapp",
+  "cli": {
+    "analytics": "e91868bb-2671-4e6f-8288-8a2b16d12b70"
+  }
 }
