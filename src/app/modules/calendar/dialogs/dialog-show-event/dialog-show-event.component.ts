@@ -1,18 +1,26 @@
+import { Component, OnInit, Inject } from '@angular/core';
 import {
-  Component,
-  OnInit,
-  Inject,
-} from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material/dialog';
-import { EventApi } from '@fullcalendar/core';
-import { AuthService } from '@app/core/services/auth';
-import {
-  Event,
-} from '@app/core/models';
+  MAT_DIALOG_DATA,
+  MatDialogRef,
+  MatDialog
+} from '@angular/material/dialog';
 
-import * as moment from 'moment';
+// Models
+import { Event } from '@app/core/models';
+
+// Types
+import { EventApi } from '@fullcalendar/core';
+
+// Services
+import { AuthService } from '@app/core/services/auth';
 import { ScreenSizeService } from '@app/core/services/utility';
+
+// Dialogs
 import { DialogDeleteEventComponent } from '../dialog-delete-event/dialog-delete-event.component';
+
+// Libraries
+import * as moment from 'moment';
+
 
 @Component({
   selector: 'app-dialog-show-event',

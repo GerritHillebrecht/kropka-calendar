@@ -39,11 +39,15 @@ export class ConversionService {
   convertEventToCalendarEvent(event: Event): CalendarEvent {
     const { start, end, title, color, description, uid } = event;
 
+
+    let eventColor = '#808000';
+    eventColor = '#6b5b95'
+
     return {
       start: start.toDate(),
       end: end.toDate(),
       title,
-      color: color ? color : '#808000',
+      color: color ? color : eventColor,
       extendedProps: {
         type: 'event',
         event,

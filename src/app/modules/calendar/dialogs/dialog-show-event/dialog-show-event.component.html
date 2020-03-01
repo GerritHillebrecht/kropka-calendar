@@ -1,52 +1,69 @@
+<!-- Header Toolbar -->
+<div class="toolbar-wrapper">
+  <mat-toolbar>
+    <p>{{ calendarEvent.title }}</p>
+    <button
+      class="ml-auto"
+      matTooltip="Schließen"
+      mat-icon-button
+      (click)="closeDialog()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      color="warn"
+      matTooltip="Löschen"
+      (click)="deleteEvent()"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-toolbar>
+</div>
+
+<!-- Content -->
 <mat-dialog-content>
-  <!-- Content -->
-  <div class="event-card">
-    <!-- Header -->
-    <div class="event-card__header">
-      <!-- <button mat-icon-button (click)="closeDialog()">
-        <mat-icon>chevron_left</mat-icon>
-      </button> -->
-      <h1 class="mat-title m-0">
-        {{ calendarEvent.title | trunk: 30 }}
-      </h1>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <mat-card-subtitle
+          class="my-3"
+          style="text-align: center; display: block;"
+        >
+          Veranstaltung am
+          <strong>
+            {{ calendarEvent.start.toDate() | date: 'shortDate' }}
+          </strong>
+        </mat-card-subtitle>
+      </div>
     </div>
-
-    <!-- description -->
-    <p class="event-card__description">
-      {{ calendarEvent.description }}
-    </p>
-
-    <!-- Start & End -->
-    <div class="event-card__times">
-      <div class="event-card__times__time">
-        <small>von:</small>
-        <mat-icon class="mx-2">access_time</mat-icon>
+    <div class="row">
+      <div class="col-6 time-container">
+        <mat-icon class="mr-2" matTooltip="Start des Events"
+          >access_time</mat-icon
+        >
         {{ calendarEvent.start.toDate() | date: 'HH:mm' }}
       </div>
-      <div class="event-card__times__time">
-        <small>bis:</small>
-        <mat-icon class="mx-2">timelapse</mat-icon>
+      <div class="col-6 time-container" matTooltip="Ende des Events">
+        <mat-icon class="mr-2">timelapse</mat-icon>
         {{ calendarEvent.end.toDate() | date: 'HH:mm' }}
       </div>
     </div>
+  </div>
+  <p>{{ calendarEvent.description }}</p>
 
-    <!-- assigned employees -->
-    <!-- <div class="event-card__assigned-members">
-      <div class="event-card__assigned-members__member mat-elevation-z3"></div>
-    </div> -->
+  <div class="employee-list">
+    <div class="employee-card mat-elevation-z1" *ngFor="let employee of calendarEvent.employees">
+      <app-avatar></app-avatar>
+      <p>{{ employee.name.first }}</p>
+    </div>
   </div>
 </mat-dialog-content>
+
 <mat-divider></mat-divider>
+
+<!-- Actions -->
 <mat-dialog-actions>
-  <button mat-stroked-button class="ml-auto">Schließen</button>
-  <ng-container *ngIf="authService.isAdmin$ | async">
-    <button
-      class="ml-2"
-      mat-stroked-button
-      color="warn"
-      (click)="deleteEvent()"
-    >
-      Löschen
-    </button>
-  </ng-container>
+  <button mat-button class="ml-auto mr-2">Schließen</button>
+  <button mat-flat-button color="primary">Aktualisieren</button>
 </mat-dialog-actions>
