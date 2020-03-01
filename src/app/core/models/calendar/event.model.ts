@@ -1,10 +1,10 @@
 import { firestore } from 'firebase/app';
-import { Employee } from './employee.model';
+import { UserProfile } from '../auth';
 
 export interface Event {
   uid?: string;
   title: string;
-  employees?: Employee[];
+  employees?: UserProfile[];
   start: firestore.Timestamp;
   end: firestore.Timestamp;
   color?: string;

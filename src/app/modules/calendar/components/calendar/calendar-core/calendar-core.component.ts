@@ -42,7 +42,7 @@ export class CalendarCoreComponent implements OnInit, AfterViewInit {
 
   calendarEvents$: Observable<CalendarEvent[]>;
 
-  @ViewChild('calendar', null) calendar: FullCalendarComponent;
+  @ViewChild('calendar', { static: false }) calendar: FullCalendarComponent;
 
   constructor(
     public calendarService: CalendarService,
@@ -95,8 +95,9 @@ export class CalendarCoreComponent implements OnInit, AfterViewInit {
     return this.dialog.open(DialogShowEventComponent, {
       data: event,
       autoFocus: false,
-      width: '400px',
-      maxWidth: '90vw'
+      width: '500px',
+      maxWidth: '90vw',
+      panelClass: 'no-select'
     });
   }
 

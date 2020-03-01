@@ -19,51 +19,77 @@
       <mat-icon>delete</mat-icon>
     </button>
   </mat-toolbar>
+  <mat-divider></mat-divider>
 </div>
 
-<!-- Content -->
+<!-- Time -->
 <mat-dialog-content>
   <div class="container">
-    <div class="row">
-      <div class="col">
-        <mat-card-subtitle
-          class="my-3"
-          style="text-align: center; display: block;"
-        >
-          Veranstaltung am
-          <strong>
-            {{ calendarEvent.start.toDate() | date: 'shortDate' }}
-          </strong>
-        </mat-card-subtitle>
+    <div class="row my-3">
+      <div class="col" style="text-align: center;">
+        <img
+          src="../../../../../assets/images/logo/logo-box.png"
+          style="max-height: 40px;"
+        />
       </div>
     </div>
     <div class="row">
+      <div class="col px-0">
+        <mat-divider></mat-divider>
+      </div>
+    </div>
+    <div class="row my-3">
       <div class="col-6 time-container">
         <mat-icon class="mr-2" matTooltip="Start des Events"
           >access_time</mat-icon
         >
         {{ calendarEvent.start.toDate() | date: 'HH:mm' }}
       </div>
-      <div class="col-6 time-container" matTooltip="Ende des Events">
-        <mat-icon class="mr-2">timelapse</mat-icon>
+      <div class="col-6 time-container">
+        <mat-icon matTooltip="Ende des Events" class="mr-2">timelapse</mat-icon>
         {{ calendarEvent.end.toDate() | date: 'HH:mm' }}
       </div>
     </div>
   </div>
-  <p>{{ calendarEvent.description }}</p>
+  <mat-divider></mat-divider>
 
-  <div class="employee-list">
-    <div class="employee-card mat-elevation-z1" *ngFor="let employee of calendarEvent.employees">
-      <app-avatar></app-avatar>
-      <p>{{ employee.name.first }}</p>
+  <!-- Description -->
+  <p class="mat-body-2" style="display: flex; align-items: center;">
+    <mat-icon class="mr-2">assignment</mat-icon>
+    Veranstaltung am
+    <strong class="ml-1">
+      {{ calendarEvent.start.toDate() | date: 'shortDate' }}
+    </strong>
+  </p>
+
+  <p class="description mat-body-1">{{ calendarEvent.description }}</p>
+
+  <!-- Employees -->
+  <ng-container *ngIf="calendarEvent.employees.length">
+    <p class="mat-body-2" style="display: flex; align-items: center;">
+      <mat-icon class="mr-2">group</mat-icon>Mitarbeiter für diese Veranstaltung
+    </p>
+
+    <div class="employee-list">
+      <div
+        class="employee-card mat-elevation-z1"
+        [matTooltip]="employee.name.full"
+        *ngFor="let employee of calendarEvent.employees"
+      >
+        <app-avatar
+          [avatarSize]="60"
+          [avatarImage]="employee.photoURL"
+        ></app-avatar>
+        <p class="employee-card__username">{{ employee.name.first }}</p>
+      </div>
     </div>
-  </div>
+  </ng-container>
 </mat-dialog-content>
 
 <mat-divider></mat-divider>
 
 <!-- Actions -->
 <mat-dialog-actions>
-  <button mat-button class="ml-auto mr-2">Schließen</button>
+  <button mat-button class="ml-auto" (click)="closeDialog()">Schließen</button>
   <button mat-flat-button color="primary">Aktualisieren</button>
 </mat-dialog-actions>

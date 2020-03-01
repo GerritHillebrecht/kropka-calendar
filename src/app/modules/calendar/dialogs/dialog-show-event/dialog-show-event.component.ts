@@ -40,6 +40,7 @@ export class DialogShowEventComponent implements OnInit {
 
   ngOnInit() {
     this.calendarEvent = this.event.extendedProps.event;
+    console.log(this.calendarEvent)
   }
 
   deleteEvent() {

@@ -4,7 +4,6 @@
 
   mat-toolbar {
     background: transparent;
-    border-bottom: 1px solid #ccc;
   }
 }
 
@@ -15,8 +14,30 @@
   justify-content: center;
 }
 
-.employee-card {
-  border: 10px;
-  display: inline-block;
-  padding: 25px;
+.description {
+  text-align: justify;
+}
+
+.employee-list {
+  margin-bottom: 16px;
+  transition: all 0.25s;
+
+  .employee-card {
+    border-radius: 6px;
+    display: inline-block;
+    padding: 10px 25px;
+
+    &:hover {
+      background-color: #f7f8f8;
+    }
+
+    &:active {
+      background-color: #e8e8e9;
+    }
+
+    &__username {
+      margin-bottom: 0;
+      text-align: center;
+    }
+  }
 }

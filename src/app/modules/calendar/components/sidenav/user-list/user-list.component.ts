@@ -6,8 +6,6 @@ import {
   AfterViewInit,
   ViewChildren,
   QueryList,
-  Output,
-  EventEmitter
 } from '@angular/core';
 
 import { Draggable } from '@fullcalendar/interaction';
@@ -26,7 +24,7 @@ export class UserListComponent implements OnInit, AfterViewInit {
   users$: Observable<UserProfile[]>;
   roles$: Observable<Role[]>;
 
-  @ViewChild('userCalendarEvents', null) userCalendarEvents: ElementRef;
+  @ViewChild('userCalendarEvents', { static: false }) userCalendarEvents: ElementRef;
   @ViewChildren('userEvent')
   userEvents: QueryList<ElementRef<HTMLElement>>;
 
