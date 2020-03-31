@@ -76,11 +76,11 @@
         [matTooltip]="employee.name.full"
         *ngFor="let employee of calendarEvent.employees"
       >
-        <app-avatar
-          [avatarSize]="60"
-          [avatarImage]="employee.photoURL"
-        ></app-avatar>
-        <p class="employee-card__username">{{ employee.name.first }}</p>
+          <app-avatar
+            [avatarSize]="60"
+            [avatarImage]="employee.photoURL"
+          ></app-avatar>
+          <p class="employee-card__username">{{ employee.name.first }}</p>
       </div>
     </div>
   </ng-container>

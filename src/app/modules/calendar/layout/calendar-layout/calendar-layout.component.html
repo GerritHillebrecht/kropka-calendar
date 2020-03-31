@@ -8,6 +8,17 @@
   >
     <app-sidenav-layout (openEvent)="sidenav.close()"></app-sidenav-layout>
   </mat-sidenav>
+  <mat-sidenav
+    class="sidenav-timeline"
+    [position]="'end'"
+    [opened]="timelineService.timelineOpened$ | async"
+    [mode]="(screenSizeService.isPhone$ | async) ? 'over' : 'side'"
+    (closed)="timelineService.toggleTimeline(false)"
+    (closedStart)="timeline.updateShifts()"
+  >
+    <!-- <app-upcoming-events-list></app-upcoming-events-list> -->
+    <app-timeline #timeline></app-timeline>
+  </mat-sidenav>
   <mat-sidenav-content>
     <router-outlet></router-outlet>
   </mat-sidenav-content>

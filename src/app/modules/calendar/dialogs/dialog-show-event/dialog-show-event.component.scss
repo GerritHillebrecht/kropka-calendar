@@ -21,11 +21,18 @@
 .employee-list {
   margin-bottom: 16px;
   transition: all 0.25s;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  position: relative;
+  gap: 10px;
 
   .employee-card {
     border-radius: 6px;
-    display: inline-block;
-    padding: 10px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 15px;
 
     &:hover {
       background-color: #f7f8f8;

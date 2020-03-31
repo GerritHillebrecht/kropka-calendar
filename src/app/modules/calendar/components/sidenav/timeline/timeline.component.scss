@@ -1,0 +1,34 @@
+.timeline {
+  display: grid;
+  gap: 50px 0;
+  position: relative;
+  padding: 24px 5px;
+
+  &::before {
+    content: '';
+    width: 1px;
+    height: 100%;
+    left: calc(60px + var(--time-point-size) + 5px);
+    background-color: var(--time-point-border-color);
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
+  }
+
+  .today {
+    position: relative;
+    background: white;
+    padding: 25px 0;
+    margin: -25px 0;
+
+    .indicator {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      background: white;
+      padding: 0 8px;
+      margin: 0;
+    }
+  }
+}

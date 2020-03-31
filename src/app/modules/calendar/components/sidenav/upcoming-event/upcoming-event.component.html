@@ -1,0 +1,21 @@
+<div class="upcoming-event mat-elevation-z2 mb-2">
+  <div
+    class="upcoming-event__description"
+    [ngStyle]="{ 'background-color': shift.role.color }"
+  >
+    <mat-icon >
+      {{ shift.role.icon }}
+    </mat-icon>
+    <p class="small muted m-0">
+      {{ shift.role.title }}
+    </p>
+  </div>
+  <div class="upcoming-event__date">
+    <p>
+      {{ shift.start.toDate() | date: 'EEEE' }}
+    </p>
+    <small class="small muted">
+      {{ shift.start.toDate() | date: 'dd. MMM' }}
+    </small>
+  </div>
+</div>

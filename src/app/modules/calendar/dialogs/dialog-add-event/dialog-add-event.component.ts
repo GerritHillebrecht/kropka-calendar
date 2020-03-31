@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {
   FormGroup,
   FormBuilder,
   Validators,
-  FormControl
+  FormControl,
+  FormArray
 } from '@angular/forms';
 import { ScreenSizeService } from '@app/core/services/utility';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -24,6 +26,9 @@ import { Observable } from 'rxjs';
 export class DialogAddEventComponent implements OnInit {
   users$: Observable<UserProfile[]>;
   addEventForm: FormGroup;
+  separatorKeysCodes: number[] = [ENTER, COMMA];
+  users: UserProfile[];
+
   get title() {
     return this.addEventForm.get('title') as FormControl;
   }
@@ -42,6 +47,10 @@ export class DialogAddEventComponent implements OnInit {
   get description() {
     return this.addEventForm.get('description') as FormControl;
   }
+  get employees() {
+    return this.addEventForm.get('employees') as FormArray;
+  }
+
 
   constructor(
     private fb: FormBuilder,
@@ -60,6 +69,9 @@ export class DialogAddEventComponent implements OnInit {
       startTime: ['19:00', Validators.required],
       end: [new Date(), Validators.required],
       endTime: ['23:00', Validators.required],
+      employees: this.fb.array([
+        { name: { first: 'Katrin', last: 'Koch', full: 'Katrin Koch' } }
+      ]),
       title: ['', Validators.required],
       description: ['']
     });

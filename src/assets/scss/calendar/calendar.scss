@@ -1,14 +1,18 @@
-.customEvent {
-  .fc-content::before {
-    content: '⭐ ';
-    display: inline;
-    position: relative;
-  }
-}
+// .customEvent {
+//   .fc-content::before {
+//     content: '⭐ ';
+//     display: inline;
+//     position: relative;
+//   }
+// }
 
 .projectTimeEvent {
   padding: 1px 5px;
   color: white!important;
+}
+
+.fc-week-number {
+  font-size: 10px;
 }
 
 .fc-view-container {

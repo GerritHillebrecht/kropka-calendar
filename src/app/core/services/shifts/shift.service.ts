@@ -28,6 +28,31 @@ export class ShiftService {
       .pipe(shareReplay(1));
   }
 
+  getUpcomingShifts(userId: string): Observable<Shift[]> {
+    return this.db
+      .collection<Shift>(firebaseCollections.shifts, ref =>
+        ref
+          .where('userProfile.uid', '==', userId)
+          .where('start', '>=', new Date())
+          .orderBy('start', 'desc')
+      )
+      .valueChanges({ idField: 'uid' })
+      .pipe(shareReplay(1));
+  }
+
+  getPastShifts(userId: string, limit?: number): Observable<Shift[]> {
+    return this.db
+      .collection<Shift>(firebaseCollections.shifts, ref =>
+        ref
+          .where('userProfile.uid', '==', userId)
+          .where('start', '<', new Date())
+          .orderBy('start', 'desc')
+          .limit(limit ? limit : 3)
+      )
+      .valueChanges({ idField: 'uid' })
+      .pipe(shareReplay(1));
+  }
+
   getUnseenShifts(userId: string): Observable<Shift[]> {
     // console.log(userId, 'userID');
     return this.db
@@ -53,7 +78,20 @@ export class ShiftService {
     return this.db
       .collection<Shift>(firebaseCollections.shifts)
       .doc<Shift>(shift.uid)
-      .update(shift);
+      .update({ ...shift, updateSeenByEmployee: false });
+  }
+
+  updateSeenStatus(shifts: Shift[]): void {
+    return shifts.forEach(shift =>
+      this.db
+        .collection<Shift>(firebaseCollections.shifts)
+        .doc(shift.uid)
+        .update({
+          ...shift,
+          seenByEmployee: true,
+          updateSeenByEmployee: true
+        })
+    );
   }
 
   deleteShift(shiftId: string): Promise<void> {

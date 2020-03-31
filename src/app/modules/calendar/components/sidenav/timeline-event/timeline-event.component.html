@@ -1,0 +1,67 @@
+<div
+  #timelineEvent
+  class="timeline-event"
+  [ngClass]="{
+    'passed-event': passedEvent,
+    nextShift: nextShift,
+    updatedShift: !shift.updateSeenByEmployee
+  }"
+>
+  <div class="timeline-event__role">
+    <mat-icon>
+      {{ shift.role.icon }}
+    </mat-icon>
+    <p class="small">
+      {{ shift.role.title }}
+    </p>
+  </div>
+
+  <div class="timeline-event__time-point"></div>
+
+  <div class="timeline-event__times">
+    <p class="small">
+      {{ shift.start.toDate() | date: 'dd. LLLL' }}
+    </p>
+    <p>
+      {{ shift.start.toDate() | date: 'EEEE' }}
+    </p>
+    <p class="small muted">
+      {{ shift.start.toDate() | date: 'HH:mm' }} -
+      {{ shift.end.toDate() | date: 'HH:mm' }}
+    </p>
+  </div>
+
+  <div class="timeline-event__info-icon">
+    <ng-container
+      *ngIf="nextShift && shift.seenByEmployee && shift.updateSeenByEmployee"
+    >
+      <mat-icon
+        matTooltip="Nächster Dienstplaneintrag"
+        matTooltipPosition="before"
+      >
+        hourglass_empty
+      </mat-icon>
+      <p class="small muted">next</p>
+    </ng-container>
+
+    <ng-container *ngIf="!shift.seenByEmployee">
+      <mat-icon
+        matTooltip="Neuer Dienstplaneintrag"
+        matTooltipPosition="before"
+      >
+        new_releases
+      </mat-icon>
+      <p class="small muted">new</p>
+    </ng-container>
+
+    <ng-container *ngIf="!shift.updateSeenByEmployee && shift.seenByEmployee">
+      <mat-icon
+        matTooltip="Dienstplaneintrag wurde aktualisiert"
+        matTooltipPosition="before"
+      >
+        update
+      </mat-icon>
+      <p class="small muted">updated</p>
+    </ng-container>
+  </div>
+</div>

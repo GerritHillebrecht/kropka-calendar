@@ -1,0 +1,8 @@
+<p>upcoming-events-list works!</p>
+<app-upcoming-event
+  *ngFor="let shift of shifts$ | async"
+  [shift]="shift"
+></app-upcoming-event>
+<mat-divider class="mt-3"></mat-divider>
+<p style="text-align: center;"><small>HEUTE</small></p>
+<mat-divider class="mt-3"></mat-divider>

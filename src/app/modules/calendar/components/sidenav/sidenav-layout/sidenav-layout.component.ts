@@ -16,6 +16,8 @@ export class SidenavLayoutComponent implements OnInit {
 
   onAddEvent() {
     this.openEvent.emit();
-    return this.dialog.open(DialogAddEventComponent);
+    return this.dialog.open(DialogAddEventComponent, {
+      maxWidth: '96vw'
+    });
   }
 }

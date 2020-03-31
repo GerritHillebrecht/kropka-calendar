@@ -10,6 +10,7 @@ export interface Shift {
   color: string;
   userProfile: UserProfile;
   seenByEmployee: boolean;
+  updateSeenByEmployee?: boolean;
   preliminary: boolean;
   createdAt: firestore.Timestamp;
   createdBy: string;

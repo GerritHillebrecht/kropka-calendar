@@ -10,6 +10,17 @@ body {
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
+:root {
+  --time-point-size: 16px;
+  --time-point-text-color: #333;
+  --time-point-color: rgba(0,0,0,0.75);
+  --time-point-border-color: #ccc;
+  --time-point-border-size-ratio: 1.6;
+  --time-point-border-size: 1px;
+  --time-point-background-color: white;
+  --time-point-role-color: purple;
+}
+
 @import './assets/scss/calendar/fullcalendar.scss';
 @import './assets/scss/calendar/calendar.scss';
 

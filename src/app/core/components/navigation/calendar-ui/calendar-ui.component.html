@@ -39,13 +39,27 @@
     *ngIf="calendarService.calendarLoading$ | async"
   ></mat-spinner>
 
-  <button [matMenuTriggerFor]="menu" mat-icon-button class="mr-3">
+  <!-- <button [matMenuTriggerFor]="menu" mat-icon-button class="mr-3">
     <mat-icon
       [matBadge]="newNotifications(latestShifts$ | async).length"
       [matBadgeColor]="'warn'"
+      [matBadgeHidden]="newNotifications(latestShifts$ | async).length === 0"
     >
       notifications
     </mat-icon>
+  </button> -->
+
+  <button
+    mat-icon-button
+    (click)="timelineService.toggleTimeline()"
+    class="mr-3"
+  >
+    <mat-icon
+      [matBadge]="newNotifications(latestShifts$ | async).length"
+      [matBadgeColor]="'warn'"
+      [matBadgeHidden]="newNotifications(latestShifts$ | async).length === 0"
+      >notifications</mat-icon
+    >
   </button>
 
   <mat-menu #menu="matMenu" (closed)="updateSeenStatus()">

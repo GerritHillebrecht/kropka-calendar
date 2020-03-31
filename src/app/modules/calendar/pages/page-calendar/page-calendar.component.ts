@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-page-calendar',
   templateUrl: './page-calendar.component.html',
-  styleUrls: ['./page-calendar.component.scss'],
+  styleUrls: ['./page-calendar.component.scss']
 })
 export class PageCalendarComponent implements OnInit {
   animationState: string;
@@ -36,4 +36,5 @@ export class PageCalendarComponent implements OnInit {
       })
       .unsubscribe();
   }
+
 }

@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 import { AuthService } from '@app/core/services/auth';
 import { ScreenSizeService } from '@app/core/services/utility';
 import { ShiftService } from '@app/core/services/shifts';
+import { TimelineService } from '@app/core/services/calendar/timeline.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-calendar-ui',
@@ -14,26 +16,21 @@ import { ShiftService } from '@app/core/services/shifts';
   styleUrls: ['./calendar-ui.component.scss']
 })
 export class CalendarUiComponent implements OnInit {
-  userProfile$: Observable<UserProfile>;
   latestShifts$: Observable<Shift[]>;
   today: Date = new Date();
 
   constructor(
     public calendarService: CalendarService,
-    private authService: AuthService,
+    private afAuth: AngularFireAuth,
     public screenSizeService: ScreenSizeService,
-    private shiftService: ShiftService
-  ) {
-    this.userProfile$ = this.authService.userProfile$;
-  }
+    private shiftService: ShiftService,
+    public timelineService: TimelineService
+  ) {}
 
   ngOnInit() {
-    this.userProfile$.subscribe(user => {
-      console.log('latest Shifts', user);
-      return user
-        ? (this.latestShifts$ = this.calendarService.getUnseenShifts(user.uid))
-        : null;
-    });
+    this.latestShifts$ = this.calendarService.getUnseenShifts(
+      this.afAuth.auth.currentUser.uid
+    );
   }
 
   getMonthIndicator(direction: 'next' | 'prev'): Date {

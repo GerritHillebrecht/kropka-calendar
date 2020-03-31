@@ -1,38 +1,78 @@
+<mat-toolbar class="px-0" style="background-color: transparent;">
+  Veranstaltung
+  <button tabindex="-1" class="ml-auto" mat-icon-button (click)="closeDialog()">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+
 <mat-dialog-content>
-  <div class="container full-width-form-field" [formGroup]="addEventForm">
+  <div class="container full-width-form-field px-0" [formGroup]="addEventForm">
     <!-- Title -->
-    <div class="row">
+    <div class="row pb-4">
       <div class="col">
-        <mat-form-field [floatLabel]="'never'">
-          <!-- <mat-label>Eventtitel</mat-label> -->
+        <mat-form-field [floatLabel]="'always'" [appearance]="'fill'">
+          <mat-label>Veranstaltungsbezeichnung</mat-label>
+          <mat-hint
+            >Die Bezeichnung, die im Dienstplan angezeigt wird.</mat-hint
+          >
           <input
             matInput
-            placeholder="Titel des Events"
+            placeholder="Wähle einen Titel"
             formControlName="title"
             autocomplete="off"
           />
+          <mat-icon class="mr-2" matPrefix>assignment</mat-icon>
+          <mat-error *ngIf="title.invalid"
+            >Bitte einen Titel für die Veranstaltung wählen.</mat-error
+          >
         </mat-form-field>
       </div>
     </div>
 
     <!-- Employees -->
-    <!-- <div class="row">
+    <div class="row pb-4">
       <div class="col">
         <div class="users-container">
-          .user
+          <mat-form-field [floatLabel]="'always'" [appearance]="'fill'">
+            <mat-label>Mitarbeiter für die Veranstaltung</mat-label>
+            <mat-hint>Mitarbeiter über die Liste auswählen.</mat-hint>
+            <mat-chip-list #chipList aria-label="Fruit selection">
+              <mat-chip
+                *ngFor="let user of employees.value"
+                [selectable]="true"
+                [removable]="true"
+              >
+                {{ user.name.first }} {{ user.name.last | trunk: 1 }}
+                <mat-icon matChipRemove>cancel</mat-icon>
+              </mat-chip>
+              <input
+                placeholder="Mitarbeiter hinzufügen"
+                #fruitInput
+                [matAutocomplete]="auto"
+                [matChipInputFor]="chipList"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              />
+            </mat-chip-list>
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let user of users$ | async" [value]="user">
+                {{ user.name.full }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
         </div>
       </div>
-    </div> -->
+    </div>
 
     <!-- Start -->
     <div class="row">
       <div class="col-md-6">
-        <mat-form-field [floatLabel]="'always'">
+        <mat-form-field [floatLabel]="'always'" [appearance]="'fill'">
           <mat-label>Beginn des Events</mat-label>
           <input
             [matDatepicker]="startPicker"
             matInput
             formControlName="start"
+            (focus)="startPicker.open()"
           />
           <mat-datepicker-toggle
             matSuffix
@@ -45,19 +85,25 @@
         </mat-form-field>
       </div>
       <div class="col-md-6">
-        <mat-form-field [floatLabel]="'always'">
+        <mat-form-field [floatLabel]="'always'" [appearance]="'fill'">
           <mat-label>Uhrzeit</mat-label>
           <input matInput type="time" formControlName="startTime" />
+          <mat-icon matSuffix>access_time</mat-icon>
         </mat-form-field>
       </div>
     </div>
 
     <!-- End -->
-    <div class="row">
+    <div class="row pb-2">
       <div class="col-md-6">
-        <mat-form-field [floatLabel]="'always'">
+        <mat-form-field [floatLabel]="'always'" [appearance]="'fill'">
           <mat-label>Ende des Events</mat-label>
-          <input [matDatepicker]="endPicker" matInput formControlName="end" />
+          <input
+            (focus)="endPicker.open()"
+            [matDatepicker]="endPicker"
+            matInput
+            formControlName="end"
+          />
           <mat-datepicker-toggle
             matSuffix
             [for]="endPicker"
@@ -69,9 +115,10 @@
         </mat-form-field>
       </div>
       <div class="col-md-6">
-        <mat-form-field [floatLabel]="'always'">
+        <mat-form-field [floatLabel]="'always'" [appearance]="'fill'">
           <mat-label>Uhrzeit</mat-label>
           <input type="time" matInput formControlName="endTime" />
+          <mat-icon matSuffix>timelapse</mat-icon>
         </mat-form-field>
       </div>
     </div>
@@ -88,20 +135,19 @@
     <!-- Description -->
     <div class="row">
       <div class="col">
-        <mat-form-field [floatLabel]="'always'">
-          <mat-label>Beschreibung</mat-label>
+        <mat-form-field [floatLabel]="'always'" [appearance]="'fill'">
+          <mat-label>Veranstaltungsbeschreibung</mat-label>
           <textarea
             matInput
             formControlName="description"
-            placeholder="Beschreibe dieses Event"
+            placeholder="Beschreibe die Veranstaltung..."
           ></textarea>
         </mat-form-field>
       </div>
     </div>
   </div>
 </mat-dialog-content>
-<mat-divider></mat-divider>
-<mat-dialog-actions>
+<mat-dialog-actions class="pb-4 pt-1">
   <button mat-button class="ml-auto mr-1" (click)="closeDialog()">
     Abbrechen
   </button>

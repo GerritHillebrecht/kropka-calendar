@@ -19,6 +19,11 @@ import { DeleteShiftComponent } from './dialogs/delete-shift/delete-shift.compon
 import { DialogShowShiftComponent } from './dialogs/dialog-show-shift/dialog-show-shift.component';
 import { DialogShowBirthdayComponent } from './dialogs/dialog-show-birthday/dialog-show-birthday.component';
 import { DialogDeleteEventComponent } from './dialogs/dialog-delete-event/dialog-delete-event.component';
+import { DialogAddUserComponent } from './dialogs/dialog-add-user/dialog-add-user.component';
+import { UpcomingEventsListComponent } from './components/sidenav/upcoming-events-list/upcoming-events-list.component';
+import { UpcomingEventComponent } from './components/sidenav/upcoming-event/upcoming-event.component';
+import { TimelineComponent } from './components/sidenav/timeline/timeline.component';
+import { TimelineEventComponent } from './components/sidenav/timeline-event/timeline-event.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +40,12 @@ import { DialogDeleteEventComponent } from './dialogs/dialog-delete-event/dialog
     DeleteShiftComponent,
     DialogShowShiftComponent,
     DialogShowBirthdayComponent,
-    DialogDeleteEventComponent
+    DialogDeleteEventComponent,
+    DialogAddUserComponent,
+    UpcomingEventsListComponent,
+    UpcomingEventComponent,
+    TimelineComponent,
+    TimelineEventComponent
   ],
   imports: [
     CommonModule,

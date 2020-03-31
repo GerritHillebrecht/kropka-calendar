@@ -1,0 +1,21 @@
+<div class="timeline">
+  <ng-container *ngIf="shifts$ | async as shifts">
+    <app-timeline-event
+      *ngFor="let shift of shifts; let i = index"
+      [shift]="shift"
+      [nextShift]="i == shifts.length - 1"
+    ></app-timeline-event>
+  </ng-container>
+  <!-- <app-timeline-event [today]="true"></app-timeline-event> -->
+  <div class="today">
+    <mat-divider> </mat-divider>
+    <p class="indicator">Heute</p>
+  </div>
+  <ng-container *ngIf="pastShifts$ | async as shifts">
+    <app-timeline-event
+      *ngFor="let shift of shifts"
+      [shift]="shift"
+      [passedEvent]="true"
+    ></app-timeline-event>
+  </ng-container>
+</div>
